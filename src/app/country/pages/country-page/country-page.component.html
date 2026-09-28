@@ -1,0 +1,7 @@
+
+@if (countryResource.error() || code()=='XXX') {
+  <country-not-found/>
+}
+@if (countryResource.hasValue()) {
+  <country-information [country]="countryResource.value()" />
+}

@@ -1,0 +1,7 @@
+<region-options (value)="query.set($event)" [activeRegion]="query()"/>
+
+<country-results-table
+  [countries]="this.countryResource.value()?? []"
+  [error]="countryResource.error()"
+  [isLoading]="countryResource.isLoading()"
+/>

@@ -1,0 +1,10 @@
+@for (region of regions; track $index) {
+  <button
+    [class]="
+      activeRegion() === region ? 'btn btn-primary mx-1 w-24' : 'btn btn-outline btn-info mx-1 w-24'
+    "
+    (click)="value.emit(region)"
+  >
+    {{ region | titlecase }}
+  </button>
+}

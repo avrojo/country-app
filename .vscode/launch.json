@@ -3,9 +3,16 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
-      "type": "chrome",
+      "name": "Launch Edge",
       "request": "launch",
+      "type": "msedge",
+      "url": "http://localhost:4200",
+      "webRoot": "root"
+    },
+    {
+      "name": "ng serve",
+      "type": "msedge",
+      "request": "attach",
       "preLaunchTask": "npm: start",
       "url": "http://localhost:4200/"
     },

@@ -1,59 +1,88 @@
 # CountryApp
+Este proyecto fue creado con Angular 22.1.7 siguiendo el curso de [Fernando Herrera en DevTalles](https://cursos.devtalles.com/courses/angular-moderno). Aunque he seguido la misma idea y estructura general del curso, he aprovechado el desarrollo para implementar varias mejoras y tomar algunas decisiones diferentes. Por ese motivo, es normal que parte del código no coincida exactamente con los ejemplos mostrados durante las clases.
+ 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.7.
+## Cambios respecto al proyecto del curso 
+Entre las principales diferencias se encuentran:
+ 
+- Uso de una API más moderna para la obtención de datos de países.
+- Modelo de país más completo, incluyendo información adicional como:
+    - nombre oficial
+    - subregión
+    - superficie
+    - divisas
+    - idiomas
+    - husos horarios
+    - gentilicio
+    - tipo de gobierno
+    - enlaces oficiales
+- Servicio de búsquedas más genérico y reutilizable.
+- Mapeo de respuestas mediante un `CountryMapper` para separar la transformación de datos de la lógica de negocio.
+- Página específica para rutas inexistentes (404).
+- Página específica para países no encontrados.
+- Mejoras visuales y de experiencia de usuario sobre la interfaz original.
+   
+  Estas modificaciones tienen como objetivo practicar conceptos adicionales de Angular y aplicar pequeñas mejoras de arquitectura, mantenibilidad y experiencia de usuario.
 
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
+## Dev
+1. Clonar repositorio
+2. [Obtener una API Key](https://restcountries.com/ 'Consigue aqui la API Key') y colocarla en [country.service.ts](src\app\country\services\country.service.ts)
+3. Crear las dependencias con `npm install`
+4. Iniciar el servidor de desarrollo con `ng serve`
+5. Navegar a `http://localhost:4200/`
 
 ## Building
+1. Ejecutar `ng build` en la terminal con la carpeta del proyecto abierta
+2. Subir la carpeta `dist` al servidor
+3. Desplegar :)
 
-To build the project run:
 
-```bash
-ng build
-```
+# CountryApp
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Aplicación desarrollada con Angular 22.1.7 tomando como base el [curso de Angular Moderno de Fernando Herrera en DevTalles](https://cursos.devtalles.com/courses/angular-moderno)
 
-## Running unit tests
+Aunque la aplicación sigue la misma idea general del proyecto del curso, he aprovechado el desarrollo para implementar diversas mejoras, refactorizaciones y funcionalidades adicionales con el objetivo de practicar conceptos más allá de los ejemplos mostrados en las clases. Por ese motivo, parte de la arquitectura, la organización de componentes y algunas soluciones técnicas difieren de las implementadas durante el curso.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Diferencias respecto al proyecto original
+### Arquitectura y mantenibilidad
+- Uso de un `CountryMapper` para desacoplar la transformación de datos de la lógica del servicio.
+- Extracción de componentes reutilizables para reducir responsabilidades en las páginas.
+- Uso de constantes tipadas (`as const`) para generar automáticamente tipos TypeScript a partir de los datos.
+- Validación de parámetros de ruta utilizando tipos estrictos.
+- Menor duplicación de código mediante servicios y componentes más genéricos y reutilizables.
 
-```bash
-ng test
-```
+### Gestión de datos
+- Uso de una API distinta a la utilizada en el curso.
+- Modelo de país ampliado con información adicional:
+  - nombre oficial
+  - subregión
+  - superficie
+  - divisas
+  - idiomas
+  - husos horarios
+  - gentilicio
+  - tipo de gobierno
+  - enlaces oficiales
+- Sistema de caché para evitar peticiones innecesarias a la API.
+- Persistencia del estado y de determinadas búsquedas para mantener información entre recargas de página. _(implementado o en desarrollo según la versión del proyecto)_
 
-## Running end-to-end tests
+### Experiencia de usuario
+- Página específica para rutas inexistentes (404).
+- Página específica para búsquedas sin resultados.
+- Distinción visual entre un error de navegación y un resultado vacío.
+- Mejoras de interfaz respecto a la implementación original del curso.
+- URLs más consistentes y normalizadas para facilitar la navegación y el compartido de enlaces.
 
-For end-to-end (e2e) testing, run:
+## Dev
+1. Clonar repositorio
+2. Crear las dependencias con `npm install`
+3. Iniciar el servidor de desarrollo con `ng serve`
+4. Navegar a `http://localhost:4200/`
 
-```bash
-ng e2e
-```
+## Compilación y despliegue
+1. Generar una versión optimizada para producción con `ng build`
+2. Subir la carpeta `dist` al servidor
+3. Desplegar :)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Créditos
+Proyecto inspirado en el curso Angular Moderno de Fernando Herrera (DevTalles), adaptado y ampliado con funcionalidades propias como ejercicio de aprendizaje y práctica de buenas prácticas de desarrollo.

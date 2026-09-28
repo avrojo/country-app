@@ -1,0 +1,133 @@
+<section class="max-w-7xl mx-auto px-6 py-8">
+  <button class="btn btn-outline mb-8" (click)="goBack()">
+    Volver
+  </button>
+
+  <div class="grid lg:grid-cols-[300px_1fr] gap-10">
+    <div class="max-w-sm">
+      <img
+        [src]="country().flagSvg"
+        [alt]="country().flagAlt"
+        class="w-full h-auto"
+      />
+    </div>
+
+    <div>
+      <h1 class="text-5xl font-bold">
+        {{ country().name }}
+      </h1>
+
+      <p class="text-lg opacity-70 mt-2">
+        {{ country().officialName }}
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+        <div class="stat">
+          <div class="stat-title">Capital</div>
+          <div class="stat-value text-primary-content text-2xl">
+            {{ country().capital }}
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-title">Población</div>
+          <div class="stat-value text-secondary-content text-2xl">
+            {{ country().population | number }}
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-title">Superficie</div>
+          <div class="stat-value text-accent-content text-2xl">
+            {{ country().area | number }}
+          </div>
+          <div class="stat-desc">km²</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider my-8"></div>
+
+  <div class="grid md:grid-cols-3 gap-8">
+    <div>
+      <h3 class="font-bold text-base-content mb-1">Región</h3>
+      <p>{{ country().region }}</p>
+
+      <div class="mt-4">
+        <h3 class="font-bold text-base-content mb-1">Subregión</h3>
+        <p>{{ country().subregion }}</p>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="font-bold text-base-content mb-1">Código</h3>
+      <p>{{ country().cca3 }}</p>
+
+      <div class="mt-4">
+        <h3 class="font-bold text-base-content mb-1">Prefijo telefónico</h3>
+        <p>+{{ country().callingCode }}</p>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="font-bold text-base-content mb-1">Gentilicio</h3>
+      <p>{{ country().demonym }}</p>
+
+      <div class="mt-4">
+        <h3 class="font-bold text-base-content mb-1">Sistema político</h3>
+        <p>{{ country().governmentType }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider my-8"></div>
+
+  <h2 class="text-2xl font-bold mb-4">
+    Idiomas
+  </h2>
+
+  <div class="flex flex-wrap gap-2 mb-8">
+    @for (language of country().languages; track language) {
+      <span class="badge badge-primary badge-lg">
+        {{ language }}
+      </span>
+    }
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4">
+    Monedas
+  </h2>
+
+  <div class="flex flex-wrap gap-2 mb-8">
+    @for (currency of country().currencies; track currency) {
+      <span class="badge badge-secondary badge-lg">
+        {{ currency }}
+      </span>
+    }
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4">
+    Zonas horarias
+  </h2>
+
+  <div class="flex flex-wrap gap-2 mb-10">
+    @for (timezone of country().timezone; track timezone) {
+      <span class="badge badge-outline">
+        {{ timezone }}
+      </span>
+    }
+  </div>
+
+  <div class="flex justify-center">
+    <a
+      [href]="country().link"
+      target="_blank"
+      class="btn btn-primary"
+    >
+      Sitio oficial
+    </a>
+  </div>
+</section>
